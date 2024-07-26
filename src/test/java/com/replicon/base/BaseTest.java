@@ -1,5 +1,4 @@
 package com.replicon.base;
-
 import com.replicon.utility.TestRunPropertyReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +23,7 @@ public class BaseTest {
             driver = new SafariDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--incongnito");
+            options.addArguments("--incognito");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--start-maximized");
             driver = new ChromeDriver(options);
@@ -58,6 +57,7 @@ public class BaseTest {
 
         loginButton.click();
         pauseBrowser(3);
+
     }
 
     @AfterClass
@@ -76,7 +76,7 @@ public class BaseTest {
         try {
             Thread.sleep(seconds * 1000L);
         } catch (InterruptedException ex) {
-            System.out.println("Interrupted exception occuring during thread.sleep call.");
+            System.out.println("Interrupted exception occurring during thread.sleep call.");
         }
     }
 }
