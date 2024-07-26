@@ -1,6 +1,5 @@
 package com.replicon.utility;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,27 +7,19 @@ import java.util.Properties;
 
 public class TestRunPropertyReader {
 
-    protected static Properties testRunProperties;
+    static Properties properties = new Properties();
 
-    public static void loadTestRunProperties() {
-        File propFile = new File("src/test/resources/testrun.properties");
-        FileInputStream fis = null;
+    public static String readProperties(String key) {
+        String propertiesFile = "src/test/resources/testrun.properties";
         try {
-             fis = new FileInputStream(propFile);
+            FileInputStream fis = new FileInputStream(propertiesFile);
+            properties.load(fis);
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
-            return;
-        }
-        testRunProperties = new Properties();
-        try {
-            testRunProperties.load(fis);
+            System.out.println("FileNotFoundException found while reading: " + propertiesFile);
         } catch (IOException e) {
-            System.out.println("IO Exception.");
+            System.out.println("IOException found while reading: " + propertiesFile);
         }
-    }
-
-    public static String getTestRunProperty(String key) {
-        return (String) testRunProperties.get(key);
+        return properties.getProperty(key);
     }
 
 }
