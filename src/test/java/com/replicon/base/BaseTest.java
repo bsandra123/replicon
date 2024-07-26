@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -16,7 +15,6 @@ import java.time.Duration;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected WebDriverWait wait;
 
     @BeforeClass
     public void classSetUpInBase() {
@@ -25,12 +23,6 @@ public class BaseTest {
         if (browser.equalsIgnoreCase("safari")) {
             driver = new SafariDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
-//            String userProfile = "C:\\Users\\Lenovo\\AppData\\Local\\Google\\Chrome\\User Data\\";
-//            ChromeOptions options = new ChromeOptions();
-//            options.addArguments("user-data-dir=" + userProfile);
-//            options.addArguments("--profile-directory=Profile 2");
-//            options.addArguments("--start-maximized");
-//            driver = new ChromeDriver(options);
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--incongnito");
             options.addArguments("--disable-popup-blocking");
@@ -52,22 +44,18 @@ public class BaseTest {
         companyName.sendKeys(TestRunPropertyReader.readProperties("company"));
         WebElement nextButton = driver.findElement(By.cssSelector("input[id='NextButton']"));
         nextButton.click();
+
         pauseBrowser(3);
+
         WebElement userNameField = driver.findElement(By.cssSelector("input[id='LoginNameTextBox']"));
         userNameField.clear();
-//        pauseBrowser(1);
         userNameField.sendKeys(TestRunPropertyReader.readProperties("userName"));
-//        pauseBrowser(2);
-        System.out.println("John Rambo.");
+
         WebElement passwordField = driver.findElement(By.cssSelector("input[id='PasswordTextBox']"));
         passwordField.clear();
-//        pauseBrowser(1);
         passwordField.sendKeys(TestRunPropertyReader.readProperties("password"));
-//        pauseBrowser(2);
         WebElement loginButton = driver.findElement(By.cssSelector("input[id='LoginButton']"));
-        pauseBrowser(3);
-        WebElement rememberMe = driver.findElement(By.cssSelector("input[id='RememberMeCheckBox']"));
-        rememberMe.click();
+
         loginButton.click();
         pauseBrowser(3);
     }

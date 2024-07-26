@@ -10,14 +10,14 @@ public class TestRunPropertyReader {
     static Properties properties = new Properties();
 
     public static String readProperties(String key) {
-
+        String propertiesFile = "src/test/resources/testrun.properties";
         try {
-            FileInputStream fis = new FileInputStream("src/test/resources/testrun.properties");
+            FileInputStream fis = new FileInputStream(propertiesFile);
             properties.load(fis);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("FileNotFoundException found while reading: " + propertiesFile);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("IOException found while reading: " + propertiesFile);
         }
         return properties.getProperty(key);
     }

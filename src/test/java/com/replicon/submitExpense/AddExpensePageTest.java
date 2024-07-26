@@ -18,7 +18,6 @@ public class AddExpensePageTest extends BaseTest {
 
     @DataProvider(name = "values")
     public Object[][] enterDataIntoAddExpenses() {
-        String[][] data = {{"Interview Expenses", "interview", "200"}, {"Onsite Expenses", "onsite", "2000"}, {"Implementation Expenses", "implementation", "500"}, {"Team Building Event", "team event", "300"}};
-        return data;
+        return new String[][]{{"Interview Expenses", "interview", "200"}, {"Onsite Expenses", "onsite", "2000"}, {"Implementation Expenses", "implementation", "500"}, {"Team Building Event", "team event", "300"}};
     }
 }

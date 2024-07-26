@@ -10,7 +10,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class WebPage {
-    public static final int DELAY_TEST_TIME = 3;
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions action;
