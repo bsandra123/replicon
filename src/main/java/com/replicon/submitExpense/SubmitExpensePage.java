@@ -45,7 +45,6 @@ public class SubmitExpensePage extends WebPage {
         addExpensesButton.click();
     }
 
-
     public void addExpense(String descriptionField, String descriptionColumn, String amount) {
         pause(2);
         this.descriptionField.sendKeys(descriptionField);
