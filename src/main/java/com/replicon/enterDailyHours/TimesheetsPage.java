@@ -37,12 +37,8 @@ public class TimesheetsPage extends WebPage {
     protected WebElement approvedButton;
     @FindBy(css = "div[id='toggleList'] > div:nth-child(6) > a > span:nth-child(2)")
     protected WebElement approvedRecords;
-    @FindBy(css = "div[id='headerFilterList'] > h1 > span > a:nth-child(6)")
-    protected WebElement currentPeriod;
     @FindBy(css = "a[class='displayName']")
     protected WebElement timesheetPeriod;
-    @FindBy(css = "div[id='headerFilterList'] > h1 > span > input:nth-child(2)")
-    protected WebElement fromDate;
 
     public TimesheetsPage(WebDriver driver) {
         super(driver);
