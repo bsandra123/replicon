@@ -16,8 +16,6 @@ public class MyTimeOffPage extends WebPage {
                     "span:nth-child(1) > span:nth-child(2)")
     protected WebElement typeDropdown;
     @FindBy(css = "ul[class='select2-results__options'] > li:first-child")
-    protected WebElement selectLeaveType;
-    @FindBy(css = "input[id='startDate']")
     protected WebElement startDateField;
     @FindBy(css = "tbody[role='application'] > tr:nth-child(5) > td:nth-child(5) > a")
     protected WebElement selectStartDate;
@@ -40,7 +38,7 @@ public class MyTimeOffPage extends WebPage {
     @FindBy(css = "li[id='calenderTab'] > a")
     protected WebElement calendar;
     @FindBy(css = "table[class='fc-border-separate'] > tbody > tr:nth-child(2) > td:nth-child(2) > div > div:nth-child(1)")
-    protected WebElement selectDateFromCalendar;
+    protected WebElement dateRangeSelector;
 
     public MyTimeOffPage(WebDriver driver) {
         super(driver);
@@ -50,18 +48,7 @@ public class MyTimeOffPage extends WebPage {
         returnToMenu.click();
         bookTimeOffSection.click();
         bookTimeOffButton.click();
-        waitForElementToBeVisible(typeDropdown);
-        typeDropdown.click();
-        waitForElementToBeVisible(selectLeaveType);
-        selectLeaveType.click();
-        startDateField.click();
-        waitForElementToBeClickable(selectStartDate);
-        selectStartDate.click();
-        endDateField.click();
-        waitForElementToBeClickable(selectEndDate);
-        selectEndDate.click();
-        submitForApproval.click();
-        pause(3);
+        performBookTimeOff();
     }
 
     public int beforeCount() {
@@ -89,17 +76,7 @@ public class MyTimeOffPage extends WebPage {
         returnToMenu.click();
         bookTimeOffSection.click();
         plusIcon.click();
-        waitForElementToBeVisible(typeDropdown);
-        typeDropdown.click();
-        waitForElementToBeVisible(leaveType);
-        leaveType.click();
-        startDateField.click();
-        waitForElementToBeClickable(selectStartDate);
-        selectStartDate.click();
-        endDateField.click();
-        waitForElementToBeClickable(selectEndDate);
-        selectEndDate.click();
-        submitForApproval.click();
+        performBookTimeOff();
     }
 
     public void bookTimeOffByAllTimeOffBookings() {
@@ -107,17 +84,7 @@ public class MyTimeOffPage extends WebPage {
         bookTimeOffSection.click();
         allTimeOffBookings.click();
         timeOffButton.click();
-        waitForElementToBeVisible(typeDropdown);
-        typeDropdown.click();
-        waitForElementToBeVisible(leaveType);
-        leaveType.click();
-        startDateField.click();
-        waitForElementToBeClickable(selectStartDate);
-        selectStartDate.click();
-        endDateField.click();
-        waitForElementToBeClickable(selectEndDate);
-        selectEndDate.click();
-        submitForApproval.click();
+        performBookTimeOff();
     }
 
     public void bookTimeOffThroughCalendar() {
@@ -125,8 +92,12 @@ public class MyTimeOffPage extends WebPage {
         bookTimeOffSection.click();
         allTimeOffBookings.click();
         calendar.click();
-        waitForElementToBeVisible(selectDateFromCalendar);
-        selectDateFromCalendar.click();
+        waitForElementToBeVisible(dateRangeSelector);
+        dateRangeSelector.click();
+        performBookTimeOff();
+    }
+
+    public void performBookTimeOff() {
         waitForElementToBeVisible(typeDropdown);
         typeDropdown.click();
         waitForElementToBeVisible(leaveType);
