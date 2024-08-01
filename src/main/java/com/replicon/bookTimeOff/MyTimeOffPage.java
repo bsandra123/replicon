@@ -9,13 +9,13 @@ public class MyTimeOffPage extends WebPage {
     @FindBy(css = "div[id='ember46'] > form > button")
     protected WebElement bookTimeOffSection;
     @FindBy(css = "div[class='mdc-button__ripple']")
-    protected WebElement allTimeOffBookings;
+    protected WebElement allTimeOffBookingsButton;
     @FindBy(css = "a[class='fakeButtonBase cardAddBooking'] > span")
     protected WebElement bookTimeOffButton;
     @FindBy(css = "li[class='timeOffType enableSearchForSelect'] > span:nth-child(3) > span:first-child > " +
                     "span:nth-child(1) > span:nth-child(2)")
     protected WebElement typeDropdown;
-    @FindBy(css = "ul[class='select2-results__options'] > li:first-child")
+    @FindBy(css = "input[id='startDate']")
     protected WebElement startDateField;
     @FindBy(css = "tbody[role='application'] > tr:nth-child(5) > td:nth-child(5) > a")
     protected WebElement selectStartDate;
@@ -30,7 +30,7 @@ public class MyTimeOffPage extends WebPage {
     @FindBy(css = "ul[class='select2-results__options'] > li:first-child")
     protected WebElement leaveType;
     @FindBy(css = "a[id='substituteBannerActionButton']")
-    protected WebElement returnToMenu;
+    protected WebElement returnToMenuButton;
     @FindBy(css = "i[class='material-icons iconAddBooking']")
     protected WebElement plusIcon;
     @FindBy(css = "button[id='bookTimeOffBtn']")
@@ -45,60 +45,47 @@ public class MyTimeOffPage extends WebPage {
     }
 
     public void bookTimeOffFromMyTimeOff() {
-        returnToMenu.click();
+        returnToMenuButton.click();
         bookTimeOffSection.click();
         bookTimeOffButton.click();
-        performBookTimeOff();
+        waitForElementToBeVisible(typeDropdown);
+        typeDropdown.click();
+        waitForElementToBeVisible(leaveType);
+        leaveType.click();
+        pause(3);
+        startDateField.click();
+        waitForElementToBeClickable(selectStartDate);
+        selectStartDate.click();
+        endDateField.click();
+        waitForElementToBeClickable(selectEndDate);
+        selectEndDate.click();
+        submitForApproval.click();
     }
 
-    public int beforeCount() {
+    public int getBeforeCount() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         return Integer.parseInt(beforeCountOfAllRequests.getText());
     }
 
-    public int afterCount() {
+    public int getAfterCount() {
         pause(3);
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         return Integer.parseInt(beforeCountOfAllRequests.getText());
     }
 
-    public int allTimeOffBookingsAfterCount() {
-        pause(3);
-        returnToMenu.click();
+    public int getAllTimeOffBookingsAfterCount() {
         pause(2);
+        returnToMenuButton.click();
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         return Integer.parseInt(beforeCountOfAllRequests.getText());
     }
 
     public void bookTimeOffFromMyTimeOffByPlusIcon() {
-        returnToMenu.click();
+        returnToMenuButton.click();
         bookTimeOffSection.click();
         plusIcon.click();
-        performBookTimeOff();
-    }
-
-    public void bookTimeOffByAllTimeOffBookings() {
-        returnToMenu.click();
-        bookTimeOffSection.click();
-        allTimeOffBookings.click();
-        timeOffButton.click();
-        performBookTimeOff();
-    }
-
-    public void bookTimeOffThroughCalendar() {
-        returnToMenu.click();
-        bookTimeOffSection.click();
-        allTimeOffBookings.click();
-        calendar.click();
-        waitForElementToBeVisible(dateRangeSelector);
-        dateRangeSelector.click();
-        performBookTimeOff();
-    }
-
-    public void performBookTimeOff() {
-        waitForElementToBeVisible(typeDropdown);
         typeDropdown.click();
         waitForElementToBeVisible(leaveType);
         leaveType.click();
@@ -110,4 +97,44 @@ public class MyTimeOffPage extends WebPage {
         selectEndDate.click();
         submitForApproval.click();
     }
+
+    public void bookTimeOffByAllTimeOffBookings() {
+        returnToMenuButton.click();
+        bookTimeOffSection.click();
+        allTimeOffBookingsButton.click();
+        timeOffButton.click();
+        typeDropdown.click();
+        waitForElementToBeVisible(leaveType);
+        leaveType.click();
+        startDateField.click();
+        waitForElementToBeClickable(selectStartDate);
+        selectStartDate.click();
+        endDateField.click();
+        waitForElementToBeClickable(selectEndDate);
+        selectEndDate.click();
+        submitForApproval.click();
+    }
+
+    public void bookTimeOffThroughCalendar() {
+        returnToMenuButton.click();
+        bookTimeOffSection.click();
+        allTimeOffBookingsButton.click();
+        calendar.click();
+        waitForElementToBeVisible(dateRangeSelector);
+        dateRangeSelector.click();
+        typeDropdown.click();
+        waitForElementToBeVisible(leaveType);
+        leaveType.click();
+        startDateField.click();
+        waitForElementToBeClickable(selectStartDate);
+        selectStartDate.click();
+        endDateField.click();
+        waitForElementToBeClickable(selectEndDate);
+        selectEndDate.click();
+        submitForApproval.click();
+    }
+
+
+
+
 }
