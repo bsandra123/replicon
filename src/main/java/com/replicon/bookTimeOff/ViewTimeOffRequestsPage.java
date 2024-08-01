@@ -111,7 +111,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
         waitingForApprovalButton.click();
     }
 
-    public String waitingRequestsCount() {
+    public String getWaitingRequestsCount() {
         return waitingRequestsCount.getText();
     }
 
@@ -121,7 +121,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
         approvedButton.click();
     }
 
-    public String approvedCount() {
+    public String getApprovedCount() {
         return approvedRequestsCount.getText();
     }
 

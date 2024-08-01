@@ -45,7 +45,7 @@ public class ViewTimeOffRequestsPageTest extends BaseTest {
     public void viewWaitingForApprovalRequestsTest() {
         ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
         viewTimeOffRequestsPage.viewWaitingForApprovalRequests();
-        String waitingRequestsCount = viewTimeOffRequestsPage.waitingRequestsCount();
+        String waitingRequestsCount = viewTimeOffRequestsPage.getWaitingRequestsCount();
         String leaveTypeRejectedRequests = viewTimeOffRequestsPage.getLeaveTypeCount();
         Assert.assertEquals(waitingRequestsCount, leaveTypeRejectedRequests);
     }
@@ -54,7 +54,7 @@ public class ViewTimeOffRequestsPageTest extends BaseTest {
     public void viewApprovedRequestsTest() {
         ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
         viewTimeOffRequestsPage.viewApprovedRequests();
-        String approvedRequestsCount = viewTimeOffRequestsPage.approvedCount();
+        String approvedRequestsCount = viewTimeOffRequestsPage.getApprovedCount();
         String leaveTypeRejectedRequests = viewTimeOffRequestsPage.getLeaveTypeCount();
         Assert.assertEquals(approvedRequestsCount, leaveTypeRejectedRequests);
     }
