@@ -13,7 +13,9 @@ public class ViewTimeOffRequestsPage extends WebPage {
     protected WebElement allTimeOffBookings;
     @FindBy(css = "a[id='All'] > span:nth-child(2)")
     protected WebElement allRequests;
-    @FindBy(css = "a[class='itemPosition']")
+    @FindBy(css = "a[id='All'] > span:nth-child(3)")
+    protected WebElement allRequestsButton;
+    @FindBy(css = "th[id='grid_urn:replicon:time-off-list-column:time-off-type'] > a:nth-child(3)")
     protected WebElement typeOfLeave;
     @FindBy(css = "table[id='grid'] > tbody > tr:nth-child(2) > td > a")
     protected WebElement typeLeave;
@@ -27,6 +29,20 @@ public class ViewTimeOffRequestsPage extends WebPage {
     protected WebElement typeDropdown;
     @FindBy(css = "li[class='selected cursor'] > a")
     protected WebElement selectLeaveType;
+    @FindBy(css = "div[id='toggleList'] > div:nth-child(2) > a")
+    protected WebElement rejectedButton;
+    @FindBy(css = "a[id='sysGeneratedListFilter1urn:replicon:time-off-booking-status:rejected'] > span:nth-child(2)")
+    protected WebElement rejectedRequests;
+    @FindBy(css = "a[title='Jump to Row']")
+    protected WebElement rejectedLeaveType;
+    @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(3)")
+    protected WebElement waitingForApprovalButton;
+    @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(2)")
+    protected WebElement waitingRequests;
+    @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(3)")
+    protected WebElement approvedButton;
+    @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(2)")
+    protected WebElement approvedRequests;
 
     public ViewTimeOffRequestsPage(WebDriver driver) {
         super(driver);
@@ -35,6 +51,8 @@ public class ViewTimeOffRequestsPage extends WebPage {
     public void viewAllTimeOffRequests() {
         bookTimeOffSection.click();
         allTimeOffBookings.click();
+        waitForElementToBeVisible(allRequestsButton);
+        allRequestsButton.click();
     }
 
     public String result() {
@@ -42,6 +60,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
     }
 
     public String leaveTypeCount() {
+        pause(3);
         String text = typeOfLeave.getText();
         return StringUtils.substringAfter(text, "/ ");
     }
@@ -70,4 +89,41 @@ public class ViewTimeOffRequestsPage extends WebPage {
         waitForElementToBeVisible(selectLeaveType);
         selectLeaveType.click();
     }
+
+    public void viewRejectedTimeOffRequests() {
+        bookTimeOffSection.click();
+        allTimeOffBookings.click();
+        rejectedButton.click();
+    }
+    public String getRejectedRequestsCount() {
+         return rejectedRequests.getText();
+    }
+
+    public String getLeaveTypeCount() {
+        waitForElementToBeVisible(rejectedLeaveType);
+        String text = rejectedLeaveType.getText();
+        return StringUtils.substringAfter(text,"/ ");
+    }
+
+    public void viewWaitingForApprovalRequests() {
+        bookTimeOffSection.click();
+        allTimeOffBookings.click();
+        waitingForApprovalButton.click();
+    }
+
+    public String waitingRequestsCount() {
+        return waitingRequests.getText();
+    }
+
+    public void viewApprovedRequests() {
+        bookTimeOffSection.click();
+        allTimeOffBookings.click();
+        approvedButton.click();
+    }
+
+    public String approvedCount() {
+        return approvedRequests.getText();
+    }
+
+
 }

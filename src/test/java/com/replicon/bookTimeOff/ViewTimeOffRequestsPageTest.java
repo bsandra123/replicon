@@ -32,4 +32,30 @@ public class ViewTimeOffRequestsPageTest extends BaseTest {
         Assert.assertEquals(dropDownText,leaveTypeText);
     }
 
+    @Test(priority = 4)
+    public void viewRejectedTimeOffRequestsTest() {
+        ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
+        viewTimeOffRequestsPage.viewRejectedTimeOffRequests();
+        String rejectedCount = viewTimeOffRequestsPage.getRejectedRequestsCount();
+        String leaveTypeRejectedRequests = viewTimeOffRequestsPage.getLeaveTypeCount();
+        Assert.assertEquals(rejectedCount, leaveTypeRejectedRequests);
+    }
+
+    @Test(priority = 5)
+    public void viewWaitingForApprovalRequestsTest() {
+        ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
+        viewTimeOffRequestsPage.viewWaitingForApprovalRequests();
+        String waitingRequestsCount = viewTimeOffRequestsPage.waitingRequestsCount();
+        String leaveTypeRejectedRequests = viewTimeOffRequestsPage.getLeaveTypeCount();
+        Assert.assertEquals(waitingRequestsCount, leaveTypeRejectedRequests);
+    }
+
+    @Test(priority = 6)
+    public void viewApprovedRequestsTest() {
+        ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
+        viewTimeOffRequestsPage.viewApprovedRequests();
+        String approvedRequestsCount = viewTimeOffRequestsPage.approvedCount();
+        String leaveTypeRejectedRequests = viewTimeOffRequestsPage.getLeaveTypeCount();
+        Assert.assertEquals(approvedRequestsCount, leaveTypeRejectedRequests);
+    }
 }
