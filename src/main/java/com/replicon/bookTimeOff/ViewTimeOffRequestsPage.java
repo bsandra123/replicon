@@ -11,14 +11,14 @@ public class ViewTimeOffRequestsPage extends WebPage {
     protected WebElement bookTimeOffSection;
     @FindBy(css = "div[class='mdc-button__ripple']")
     protected WebElement allTimeOffBookings;
-    @FindBy(css = "a[id='All'] > span:nth-child(2)")
-    protected WebElement allRequests;
     @FindBy(css = "a[id='All'] > span:nth-child(3)")
     protected WebElement allRequestsButton;
+    @FindBy(css = "a[id='All'] > span:nth-child(2)")
+    protected WebElement allRequestsCount;
     @FindBy(css = "th[id='grid_urn:replicon:time-off-list-column:time-off-type'] > a:nth-child(3)")
     protected WebElement typeOfLeave;
     @FindBy(css = "table[id='grid'] > tbody > tr:nth-child(2) > td > a")
-    protected WebElement typeLeave;
+    protected WebElement searchLeaveType;
     @FindBy(css = "li[class='last clickable'] > a")
     protected WebElement allBalances;
     @FindBy(css = "span[class='currentLocation']")
@@ -38,11 +38,11 @@ public class ViewTimeOffRequestsPage extends WebPage {
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(3)")
     protected WebElement waitingForApprovalButton;
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(2)")
-    protected WebElement waitingRequests;
+    protected WebElement waitingRequestsCount;
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(3)")
     protected WebElement approvedButton;
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(2)")
-    protected WebElement approvedRequests;
+    protected WebElement approvedRequestsCount;
 
     public ViewTimeOffRequestsPage(WebDriver driver) {
         super(driver);
@@ -55,11 +55,11 @@ public class ViewTimeOffRequestsPage extends WebPage {
         allRequestsButton.click();
     }
 
-    public String result() {
-        return allRequests.getText();
+    public String getResult() {
+        return allRequestsCount.getText();
     }
 
-    public String leaveTypeCount() {
+    public String getLeaveTypeCountForAllRequests() {
         pause(3);
         String text = typeOfLeave.getText();
         return StringUtils.substringAfter(text, "/ ");
@@ -71,12 +71,12 @@ public class ViewTimeOffRequestsPage extends WebPage {
         allBalances.click();
     }
 
-    public String currentBalanceResult() {
+    public String getCurrentBalanceResult() {
         String currentText = currentBalance.getText();
         return StringUtils.substringAfter(currentText, "t ");
     }
 
-    public String balanceSummaryResult() {
+    public String getBalanceSummaryResult() {
         String balanceText = balanceSummary.getText();
         return StringUtils.substringBefore(balanceText, " S");
     }
@@ -112,7 +112,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
     }
 
     public String waitingRequestsCount() {
-        return waitingRequests.getText();
+        return waitingRequestsCount.getText();
     }
 
     public void viewApprovedRequests() {
@@ -122,7 +122,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
     }
 
     public String approvedCount() {
-        return approvedRequests.getText();
+        return approvedRequestsCount.getText();
     }
 
 

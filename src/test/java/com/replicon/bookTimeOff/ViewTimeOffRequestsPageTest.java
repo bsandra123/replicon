@@ -11,15 +11,15 @@ public class ViewTimeOffRequestsPageTest extends BaseTest {
     public void viewAllTimeOffRequestsTest() {
         ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
         viewTimeOffRequestsPage.viewAllTimeOffRequests();
-        Assert.assertEquals(viewTimeOffRequestsPage.result(),viewTimeOffRequestsPage.leaveTypeCount());
+        Assert.assertEquals(viewTimeOffRequestsPage.getResult(),viewTimeOffRequestsPage.getLeaveTypeCountForAllRequests());
     }
 
     @Test(priority = 2)
     public void viewCurrentBalanceForAllMyTimeOffCategoriesTest() {
         ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
         viewTimeOffRequestsPage.viewCurrentBalanceForAllMyTimeOffCategories();
-        String balanceResult = viewTimeOffRequestsPage.balanceSummaryResult();
-        String currentResult = viewTimeOffRequestsPage.currentBalanceResult();
+        String balanceResult = viewTimeOffRequestsPage.getBalanceSummaryResult();
+        String currentResult = viewTimeOffRequestsPage.getCurrentBalanceResult();
         Assert.assertEquals(balanceResult, currentResult);
     }
 
@@ -28,7 +28,7 @@ public class ViewTimeOffRequestsPageTest extends BaseTest {
         ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
         viewTimeOffRequestsPage.searchAndViewLeavesAppliedForInEachCategory();
         String dropDownText = viewTimeOffRequestsPage.typeDropdown.getText();
-        String leaveTypeText = viewTimeOffRequestsPage.typeLeave.getText();
+        String leaveTypeText = viewTimeOffRequestsPage.searchLeaveType.getText();
         Assert.assertEquals(dropDownText,leaveTypeText);
     }
 
