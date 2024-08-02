@@ -1,4 +1,4 @@
-package com.replicon.bookTimeOff;
+package com.replicon.booktimeoff;
 
 import com.replicon.base.BaseTest;
 import org.openqa.selenium.support.PageFactory;
@@ -10,36 +10,36 @@ public class MyTimeOffPageTest extends BaseTest {
     @Test(priority = 1)
     public void bookTimeOffFromMyTimeOffTest() {
         MyTimeOffPage myTimeOffPage = PageFactory.initElements(driver, MyTimeOffPage.class);
-        int requestsBeforeCount = myTimeOffPage.getBeforeCount();
+        int requestsBeforeCount = myTimeOffPage.getInitialCount();
         myTimeOffPage.bookTimeOffFromMyTimeOff();
-        int requestsAfterCount = myTimeOffPage.getAfterCount();
+        int requestsAfterCount = myTimeOffPage.getUpdatedCount();
         Assert.assertTrue(requestsBeforeCount < requestsAfterCount);
     }
 
     @Test(priority = 2)
-    public void bookTimeOffFromMyTimeOffByPlusIcon() {
+    public void bookTimeOffByPlusIcon() {
         MyTimeOffPage myTimeOffPage = PageFactory.initElements(driver, MyTimeOffPage.class);
-        int requestsBeforeCount = myTimeOffPage.getBeforeCount();
-        myTimeOffPage.bookTimeOffFromMyTimeOffByPlusIcon();
-        int requestsAfterCount = myTimeOffPage.getAfterCount();
+        int requestsBeforeCount = myTimeOffPage.getInitialCount();
+        myTimeOffPage.bookTimeOffByPlusIcon();
+        int requestsAfterCount = myTimeOffPage.getUpdatedCount();
         Assert.assertTrue(requestsBeforeCount < requestsAfterCount);
     }
 
     @Test(priority = 3)
     public void bookTimeOffByAllTimeOffBookingsTest() {
         MyTimeOffPage myTimeOffPage = PageFactory.initElements(driver, MyTimeOffPage.class);
-        int requestsBeforeCount = myTimeOffPage.getBeforeCount();
+        int requestsBeforeCount = myTimeOffPage.getInitialCount();
         myTimeOffPage.bookTimeOffByAllTimeOffBookings();
-        int requestsAfterCount = myTimeOffPage.getAllTimeOffBookingsAfterCount();
+        int requestsAfterCount = myTimeOffPage.getAllTimeOffBookingsUpdatedCount();
         Assert.assertTrue(requestsBeforeCount < requestsAfterCount);
     }
 
     @Test(priority = 4)
     public void bookTimeOffThroughCalendarTest() {
         MyTimeOffPage myTimeOffPage = PageFactory.initElements(driver, MyTimeOffPage.class);
-        int requestsBeforeCount = myTimeOffPage.getBeforeCount();
+        int requestsBeforeCount = myTimeOffPage.getInitialCount();
         myTimeOffPage.bookTimeOffThroughCalendar();
-        int requestsAfterCount = myTimeOffPage.getAllTimeOffBookingsAfterCount();
+        int requestsAfterCount = myTimeOffPage.getAllTimeOffBookingsUpdatedCount();
         Assert.assertTrue(requestsBeforeCount < requestsAfterCount);
     }
 

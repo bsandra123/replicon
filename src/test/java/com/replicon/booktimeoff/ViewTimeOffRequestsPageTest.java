@@ -1,4 +1,4 @@
-package com.replicon.bookTimeOff;
+package com.replicon.booktimeoff;
 
 import com.replicon.base.BaseTest;
 import org.openqa.selenium.support.PageFactory;
@@ -24,9 +24,9 @@ public class ViewTimeOffRequestsPageTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void searchAndViewLeavesAppliedForInEachCategoryTest() {
+    public void searchAndViewLeavesAppliedInEachCategoryTest() {
         ViewTimeOffRequestsPage viewTimeOffRequestsPage = PageFactory.initElements(driver, ViewTimeOffRequestsPage.class);
-        viewTimeOffRequestsPage.searchAndViewLeavesAppliedForInEachCategory();
+        viewTimeOffRequestsPage.searchAndViewLeavesAppliedInEachCategory();
         String dropDownText = viewTimeOffRequestsPage.typeDropdown.getText();
         String leaveTypeText = viewTimeOffRequestsPage.searchLeaveType.getText();
         Assert.assertEquals(dropDownText,leaveTypeText);

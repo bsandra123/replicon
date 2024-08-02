@@ -1,4 +1,4 @@
-package com.replicon.enterDailyHours;
+package com.replicon.enterdailyhours;
 
 import com.replicon.base.WebPage;
 import org.apache.commons.lang3.StringUtils;

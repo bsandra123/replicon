@@ -3,7 +3,7 @@
 <suite name="Smoke" verbose="1" thread-count="1">
     <test name="SmokeTest">
         <classes>
-            <class name="com.replicon.submitExpense.AddExpensePageTest"/>
+            <class name="com.replicon.submitexpense.AddExpensePageTest"/>
         </classes>
     </test>
 </suite>

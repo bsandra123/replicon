@@ -1,4 +1,4 @@
-package com.replicon.bookTimeOff;
+package com.replicon.booktimeoff;
 
 import com.replicon.base.WebPage;
 import org.apache.commons.lang3.StringUtils;
@@ -10,13 +10,13 @@ public class ViewTimeOffRequestsPage extends WebPage {
     @FindBy(css = "div[id='ember46'] > form > button")
     protected WebElement bookTimeOffSection;
     @FindBy(css = "div[class='mdc-button__ripple']")
-    protected WebElement allTimeOffBookings;
+    protected WebElement allTimeOffBookingsButton;
     @FindBy(css = "a[id='All'] > span:nth-child(3)")
     protected WebElement allRequestsButton;
     @FindBy(css = "a[id='All'] > span:nth-child(2)")
     protected WebElement allRequestsCount;
     @FindBy(css = "th[id='grid_urn:replicon:time-off-list-column:time-off-type'] > a:nth-child(3)")
-    protected WebElement typeOfLeave;
+    protected WebElement leaveType;
     @FindBy(css = "table[id='grid'] > tbody > tr:nth-child(2) > td > a")
     protected WebElement searchLeaveType;
     @FindBy(css = "li[class='last clickable'] > a")
@@ -50,7 +50,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
 
     public void viewAllTimeOffRequests() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         waitForElementToBeVisible(allRequestsButton);
         allRequestsButton.click();
     }
@@ -61,13 +61,13 @@ public class ViewTimeOffRequestsPage extends WebPage {
 
     public String getLeaveTypeCountForAllRequests() {
         pause(3);
-        String text = typeOfLeave.getText();
+        String text = leaveType.getText();
         return StringUtils.substringAfter(text, "/ ");
     }
 
     public void viewCurrentBalanceForAllMyTimeOffCategories() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         allBalances.click();
     }
 
@@ -81,9 +81,9 @@ public class ViewTimeOffRequestsPage extends WebPage {
         return StringUtils.substringBefore(balanceText, " S");
     }
 
-    public void searchAndViewLeavesAppliedForInEachCategory() {
+    public void searchAndViewLeavesAppliedInEachCategory() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         pause(3);
         typeDropdown.click();
         waitForElementToBeVisible(selectLeaveType);
@@ -92,7 +92,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
 
     public void viewRejectedTimeOffRequests() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         rejectedButton.click();
     }
     public String getRejectedRequestsCount() {
@@ -107,7 +107,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
 
     public void viewWaitingForApprovalRequests() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         waitingForApprovalButton.click();
     }
 
@@ -117,7 +117,7 @@ public class ViewTimeOffRequestsPage extends WebPage {
 
     public void viewApprovedRequests() {
         bookTimeOffSection.click();
-        allTimeOffBookings.click();
+        allTimeOffBookingsButton.click();
         approvedButton.click();
     }
 

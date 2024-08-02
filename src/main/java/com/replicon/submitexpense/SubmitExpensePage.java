@@ -1,4 +1,4 @@
-package com.replicon.submitExpense;
+package com.replicon.submitexpense;
 
 import com.replicon.base.WebPage;
 import org.openqa.selenium.By;

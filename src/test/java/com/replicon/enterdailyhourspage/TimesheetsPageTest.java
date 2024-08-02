@@ -1,7 +1,7 @@
-package com.replicon.enterDailyHoursPage;
+package com.replicon.enterdailyhourspage;
 
 import com.replicon.base.BaseTest;
-import com.replicon.enterDailyHours.TimesheetsPage;
+import com.replicon.enterdailyhours.TimesheetsPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
