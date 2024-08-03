@@ -7,40 +7,58 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ViewTimeOffRequestsPage extends WebPage {
+
     @FindBy(css = "div[id='ember46'] > form > button")
     protected WebElement bookTimeOffSection;
+
     @FindBy(css = "div[class='mdc-button__ripple']")
     protected WebElement allTimeOffBookingsButton;
+
     @FindBy(css = "a[id='All'] > span:nth-child(3)")
     protected WebElement allRequestsButton;
+
     @FindBy(css = "a[id='All'] > span:nth-child(2)")
     protected WebElement allRequestsCount;
+
     @FindBy(css = "th[id='grid_urn:replicon:time-off-list-column:time-off-type'] > a:nth-child(3)")
     protected WebElement leaveType;
+
     @FindBy(css = "table[id='grid'] > tbody > tr:nth-child(2) > td > a")
     protected WebElement searchLeaveType;
+
     @FindBy(css = "li[class='last clickable'] > a")
     protected WebElement allBalances;
+
     @FindBy(css = "span[class='currentLocation']")
     protected WebElement balanceSummary;
+
     @FindBy(css = "th[id='grid_balance'] > div")
     protected WebElement currentBalance;
+
     @FindBy(css = "li[role='presentation'] > span > a")
     protected WebElement typeDropdown;
+
     @FindBy(css = "li[class='selected cursor'] > a")
     protected WebElement selectLeaveType;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(2) > a")
     protected WebElement rejectedButton;
+
     @FindBy(css = "a[id='sysGeneratedListFilter1urn:replicon:time-off-booking-status:rejected'] > span:nth-child(2)")
     protected WebElement rejectedRequests;
+
     @FindBy(css = "a[title='Jump to Row']")
     protected WebElement rejectedLeaveType;
+
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(3)")
     protected WebElement waitingForApprovalButton;
+
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(2)")
     protected WebElement waitingRequestsCount;
+
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(3)")
     protected WebElement approvedButton;
+
     @FindBy(css = "a[id='sysGeneratedListFilter2urn:replicon:time-off-booking-status:waiting'] > span:nth-child(2)")
     protected WebElement approvedRequestsCount;
 

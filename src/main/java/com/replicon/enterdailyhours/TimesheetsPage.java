@@ -7,36 +7,52 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class TimesheetsPage extends WebPage {
+
     @FindBy(css = "div[id='ember25'] > form > button")
     protected WebElement enterDailyHours;
+
     @FindBy(css = "span[class='mdc-button__ripple']")
     protected WebElement allTimesheetsButton;
+
     @FindBy(css = "a[id='All'] > span:nth-child(3)")
     protected WebElement allButton;
+
     @FindBy(css = "a[id='All'] > span:nth-child(2)")
     protected WebElement allRecords;
+
     @FindBy(css = "div[id='jqgh_grid_urn:replicon:timesheet-list-column:timesheet-period'] + a")
     protected WebElement timesheetsRecord;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(2) > a > span:nth-child(3)")
     protected WebElement notSubmittedButton;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(2) > a > span:nth-child(2)")
     protected WebElement notSubmittedRecords;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(3) > a > span:nth-child(3)")
     protected WebElement overdueButton;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(3) > a > span:nth-child(2)")
     protected WebElement overdueRecords;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(4) > a > span:nth-child(3)")
     protected WebElement rejectedButton;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(4) > a > span:nth-child(2)")
     protected WebElement rejectedRecords;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(5) > a > span:nth-child(3)")
     protected WebElement waitingForApprovalButton;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(5) > a > span:nth-child(2)")
     protected WebElement waitingForApprovalRecords;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(6) > a > span:nth-child(3)")
     protected WebElement approvedButton;
+
     @FindBy(css = "div[id='toggleList'] > div:nth-child(6) > a > span:nth-child(2)")
     protected WebElement approvedRecords;
+
     @FindBy(css = "a[class='displayName']")
     protected WebElement timesheetPeriod;
 

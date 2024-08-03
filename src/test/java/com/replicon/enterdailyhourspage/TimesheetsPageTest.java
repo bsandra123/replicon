@@ -41,7 +41,7 @@ public class TimesheetsPageTest extends BaseTest {
         Assert.assertEquals(recordsText,Integer.toString(timesheetCount));
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void viewOnlyWaitingForApprovalTimesheetsTest() {
         TimesheetsPage timesheetsPage = PageFactory.initElements(driver, TimesheetsPage.class);
         timesheetsPage.viewOnlyWaitingForApprovalTimesheets();
@@ -50,7 +50,7 @@ public class TimesheetsPageTest extends BaseTest {
         Assert.assertEquals(recordsText,Integer.toString(timesheetCount));
     }
 
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void viewOnlyApprovedTimesheetsTest() {
         TimesheetsPage timesheetsPage = PageFactory.initElements(driver, TimesheetsPage.class);
         timesheetsPage.viewOnlyApprovedTimesheets();
